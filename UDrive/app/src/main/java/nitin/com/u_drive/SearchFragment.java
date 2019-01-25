@@ -28,9 +28,8 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         View layout = inflater.inflate(R.layout.fragment_search, container, false);
         // Generate sample data
 
-        moviewList = new String[]{"Xmen", "Titanic", "Captain America",
-                "Iron man", "Rocky", "Transporter", "Lord of the rings", "The jungle book",
-                "Tarzan","Cars","Shreck"};
+        moviewList = new String[]{"titwala ganesh mandir","Talao Pali","Thane creek","Nariman point","Gateway of India","Marine Lines","Sidhi Vinayak mandir","Rajeev Gandhi national park"
+        ,"Mahalaskmi","Juhu beach"};
 
         // Locate the ListView in listview_main.xml
         list = (ListView) layout.findViewById(R.id.listview);
@@ -65,6 +64,11 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+
+        if(movieNamesArrayList.contains(query))
+        {
+            adapter.filter(query);
+        }
         return false;
     }
 

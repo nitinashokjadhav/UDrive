@@ -1,6 +1,8 @@
 package nitin.com.u_drive;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -10,15 +12,15 @@ import android.view.MenuItem;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private static int SPLASH_TIME = 4000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView  = findViewById(R.id.btmNav);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-
+        Fragment fragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override

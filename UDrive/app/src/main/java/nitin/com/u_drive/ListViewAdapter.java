@@ -22,8 +22,8 @@ public class ListViewAdapter extends BaseAdapter {
     public ListViewAdapter(Context context ,ArrayList<MovieNames> movieNamesArrayList) {
 
        inflater = LayoutInflater.from(context);
-       arraylist=movieNamesArrayList;
-
+       arraylist= new ArrayList<MovieNames>();
+       arraylist.addAll(SearchFragment.movieNamesArrayList);
     }
 
     public class ViewHolder {

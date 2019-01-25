@@ -4,25 +4,21 @@
     android:layout_height="match_parent"
 
     >
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account Tab"
-        android:layout_centerInParent="true"
-        android:textSize="30sp"/>
-
-    <ScrollView
+        android:id="@+id/Login"
         android:layout_width="match_parent"
-        android:layout_height="473dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="94dp">
+        android:layout_height="75dp"
+        android:text="User login"
+        android:textSize="30dp"/>
+    <TextView
+        android:id="@+id/Register"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_below="@+id/Login"
+        android:text="User Register"
+        android:textSize="30dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
 
 </RelativeLayout>
