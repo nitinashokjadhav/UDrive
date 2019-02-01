@@ -12,12 +12,13 @@ import android.view.MenuItem;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME = 4000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView  = findViewById(R.id.btmNav);
+        bottomNavigationView.setItemHorizontalTranslation(false);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         Fragment fragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();

@@ -6,10 +6,12 @@
     >
 
     <LinearLayout
+        android:id="@+id/Linear"
         android:layout_width="match_parent"
         android:layout_height="252dp"
-        android:background="@drawable/a"
-        android:id="@+id/Linear">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/mum4">
 
         <Button
             android:layout_width="113dp"
@@ -34,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="100dp">
+        android:layout_marginBottom="97dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,34 +47,57 @@
                 android:id="@+id/btn1"
                 android:layout_width="183dp"
                 android:layout_height="172dp"
-                android:background="@drawable/capture"
-                android:paddingLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bandstand" />
 
             <Button
-                android:layout_width="201dp"
-                android:layout_height="193dp"
-                android:background="@drawable/img2" />
+                android:id="@+id/btn2"
+                android:layout_width="176dp"
+                android:layout_height="172dp"
+                android:background="@drawable/gateway_of_india"
+                android:layout_marginLeft="10dp" />
 
             <Button
-                android:layout_width="201dp"
-                android:layout_height="193dp"
-                android:background="@drawable/img3" />
+                android:id="@+id/btn3"
+                android:layout_width="183dp"
+                android:layout_height="172dp"
+                android:background="@drawable/bappa"
+              android:layout_marginLeft="10dp" />
 
             <Button
-                android:layout_width="201dp"
-                android:layout_height="193dp" />
+                android:id="@+id/btn4"
+                android:layout_width="183dp"
+                android:layout_height="172dp"
+                android:background="@drawable/elephanta"
+                android:layout_marginLeft="10dp" />
 
             <Button
-                android:layout_width="201dp"
-                android:layout_height="193dp" />
+                android:id="@+id/btn5"
+                android:layout_width="183dp"
+                android:layout_height="172dp"
+                android:background="@drawable/hajjiali"
+                android:layout_marginLeft="10dp"/>
 
             <Button
-                android:layout_width="201dp"
-                android:layout_height="193dp" />
+                android:id="@+id/btn6"
+                android:layout_width="183dp"
+                android:layout_height="172dp"
+                android:background="@drawable/juhu"
+                android:layout_marginLeft="10dp" />
+
+            <Button
+                android:id="@+id/btn7"
+                android:layout_width="183dp"
+                android:layout_height="172dp"
+                android:background="@drawable/shivaji_terminus"
+                android:layout_marginLeft="10dp" />
+
+            <Button
+                android:id="@+id/btn8"
+                android:layout_width="183dp"
+                android:layout_height="172dp"
+                android:background="@drawable/sea_link"
+                android:layout_marginLeft="10dp" />
         </LinearLayout>
     </HorizontalScrollView>
-
-
-
-
 </RelativeLayout>

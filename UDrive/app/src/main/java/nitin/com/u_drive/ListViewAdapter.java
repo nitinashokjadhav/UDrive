@@ -1,11 +1,11 @@
 package nitin.com.u_drive;
 import android.content.Context;
-import android.nfc.Tag;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,27 +17,28 @@ public class ListViewAdapter extends BaseAdapter {
 
     SearchFragment mContext;
     LayoutInflater inflater;
-    private ArrayList<MovieNames> arraylist;
+    private ArrayList<Place> arraylist;
 
-    public ListViewAdapter(Context context ,ArrayList<MovieNames> movieNamesArrayList) {
+    public ListViewAdapter(Context context ,ArrayList<Place> placeArrayList) {
 
        inflater = LayoutInflater.from(context);
-       arraylist= new ArrayList<MovieNames>();
-       arraylist.addAll(SearchFragment.movieNamesArrayList);
+       arraylist= new ArrayList<Place>();
+       arraylist.addAll(SearchFragment.placeArrayList);
     }
 
     public class ViewHolder {
         TextView name;
+       TextView id;
     }
 
     @Override
     public int getCount() {
-        return SearchFragment.movieNamesArrayList.size();
+        return SearchFragment.placeArrayList.size();
     }
 
     @Override
-    public MovieNames getItem(int position) {
-        return SearchFragment.movieNamesArrayList.get(position);
+    public Place getItem(int position) {
+        return SearchFragment.placeArrayList.get(position);
     }
 
     @Override
@@ -52,31 +53,32 @@ public class ListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listview_item,null);
             // Locate the TextViews in listview_item.xml
             holder.name = (TextView) view.findViewById(R.id.name);
+            holder.id   = (TextView) view.findViewById(R.id.id);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
-        holder.name.setText(SearchFragment.movieNamesArrayList.get(position).getAnimalName());
+        holder.name.setText(SearchFragment.placeArrayList.get(position).getpName());
+        holder.id.setText(SearchFragment.placeIdArrayList.get(position).getpId());
         return view;
     }
 
     // Filter Class
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        SearchFragment.movieNamesArrayList.clear();
+        SearchFragment.placeArrayList.clear();
         if (charText.length() == 0) {
-            SearchFragment.movieNamesArrayList.addAll(arraylist);
+            SearchFragment.placeArrayList.addAll(arraylist);
             Log.i("FILTER","Not selected");
         } else {
-            for (MovieNames wp : arraylist) {
-                if (wp.getAnimalName().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    SearchFragment.movieNamesArrayList.add(wp);
-                    Log.i("FILTER","any selected");
+            for (Place wp : arraylist) {
+                if (wp.getpName().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    SearchFragment.placeArrayList.add(wp);
+                    Log.i("FILTER",charText);
                 }
             }
         }
-        Log.i("FILTER","Nothing");
         notifyDataSetChanged();
     }
 

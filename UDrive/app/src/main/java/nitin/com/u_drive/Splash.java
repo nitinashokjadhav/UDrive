@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class Splash extends AppCompatActivity {
-    private static int SPLASH_TIME = 4000;
+
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class Splash extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },5000);
+        },3000);
 
     }
 }
