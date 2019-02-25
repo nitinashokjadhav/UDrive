@@ -46,7 +46,7 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         {
             pl  +=  cursor.getString(1)+"_";
             ids +=  cursor.getInt(0)+"_";
-            Log.i("Inside for", cursor.getString(0));
+           // Log.i("Inside for", cursor.getString(0));
             j++;
       }while (cursor.moveToNext());
 

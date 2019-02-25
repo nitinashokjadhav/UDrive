@@ -21,5 +21,11 @@ public class RegisterAsActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),UserRegActivity.class));
             }
         });
+        Driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterAsActivity.this,DriverRegActivity.class));
+            }
+        });
     }
 }

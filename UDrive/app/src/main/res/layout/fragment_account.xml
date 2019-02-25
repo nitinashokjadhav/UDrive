@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     >
 
-    <TextView
-        android:gravity="center"
-        android:id="@+id/Login"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_weight="2"
-        android:fontFamily="monospace"
-        android:text="Login"
-        android:textColorLink="@android:color/background_dark"
-        android:textSize="20sp"
-        android:typeface="serif"
-        tools:textColorLink="@android:color/background_dark" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp">
 
-    <TextView
-        android:gravity="center"
-        android:id="@+id/Register"
+        <TextView
+            android:id="@+id/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:layout_weight="2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Login"
+            android:textColorLink="@android:color/background_dark"
+            android:textSize="20sp"
+            android:typeface="serif"
+            tools:textColorLink="@android:color/background_dark" />
+
+
+        <TextView
+            android:id="@+id/Register"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:layout_weight="2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="SignUp"
+            android:textColorLink="@android:color/background_dark"
+            android:textSize="20sp"
+            android:typeface="serif"
+            tools:textColorLink="@android:color/background_dark" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_weight="2"
-        android:fontFamily="monospace"
-        android:text="SignUp"
-        android:textColorLink="@android:color/background_dark"
-        android:textSize="20sp"
-        android:typeface="serif"
-        tools:textColorLink="@android:color/background_dark" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="126dp"
+        android:text="Button" />
+
+
+</RelativeLayout>

@@ -26,9 +26,9 @@ public class BookFragment extends Fragment implements Bookings.OnFragmentInterac
         final PageAdapter adapter = new PageAdapter(getChildFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
-        viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());

@@ -5,20 +5,34 @@
     android:layout_height="match_parent"
     >
 
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
     <LinearLayout
         android:id="@+id/Linear"
         android:layout_width="match_parent"
         android:layout_height="252dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/mum4">
+        android:orientation="horizontal"
+        android:layout_below="@+id/user">
+
+
+        <EditText
+            android:id="@+id/l"
+            android:layout_width="314dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            />
 
         <Button
-            android:layout_width="113dp"
-            android:layout_height="43dp"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="70dp"
-            android:text="Get car" />
+            android:id="@+id/location"
+            android:layout_width="35dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_location_searching_black_24dp" />
+
     </LinearLayout>
 
     <TextView

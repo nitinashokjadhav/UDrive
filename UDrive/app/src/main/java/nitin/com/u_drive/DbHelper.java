@@ -14,7 +14,7 @@ import android.util.Log;
 public  class DbHelper extends SQLiteOpenHelper {
     public static final String TAG=DbHelper.class.getSimpleName();
     public static final String DB_NAME="myapp_db";
-    public static final int DB_VERSION=1;
+    public static final int DB_VERSION=2;
     public static final String USER_TABLE="users";
     public static final  String COLUMN_ID="_id";
     public static final String COLUMN_PASS="password";
