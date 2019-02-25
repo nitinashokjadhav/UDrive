@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/RelativeLayout01" android:background="@color/White"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+	<RelativeLayout android:id="@+id/RelativeLayout02"
+		android:layout_width="wrap_content" android:layout_height="50px">
+		<ImageView android:id="@+id/img1" android:layout_width="fill_parent"
+			android:layout_below="@+id/RelativeLayout02" android:layout_height="fill_parent"
+			android:background="@drawable/headers">
+		</ImageView>
+		<Button android:layout_height="wrap_content" android:id="@+id/Btngo"
+			android:layout_width="wrap_content" android:layout_above="@+id/RelativeLayout03"
+			android:background="@drawable/go" android:layout_marginTop="9px"
+			android:layout_marginLeft="7px">
+		</Button>
+		<Button android:layout_height="wrap_content" android:id="@+id/Btndetail"
+			android:layout_width="wrap_content" android:layout_above="@+id/RelativeLayout03"
+			android:background="@drawable/detail" android:layout_marginTop="9px"
+			android:layout_marginLeft="380px">
+		</Button>
+	</RelativeLayout>
+	<RelativeLayout android:layout_width="wrap_content"
+		android:layout_below="@+id/RelativeLayout02" android:layout_height="wrap_content"
+		android:id="@+id/mainlayout">
+		<com.google.android.maps.MapView
+			android:id="@+id/mapview" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:clickable="true"
+			android:apiKey="0d0JyssTHBQKM4w9m-TbI7a1-px_X2pC0zYVKfw" />
+	</RelativeLayout>
+	<RelativeLayout android:layout_width="wrap_content"
+		android:layout_above="@+id/mapview" android:layout_height="wrap_content"
+		android:id="@+id/mainlayout">
+		<Button android:layout_width="115px" android:id="@+id/Button02" android:text="Live Map" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:textColor="#CC6600" /> 
+<Button android:layout_width="115px" android:id="@+id/Button03" android:text="In The Cab" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:layout_marginLeft="110px" android:textColor="#CC6600" /> 
+  <Button android:layout_width="115px" android:id="@+id/Button04" android:text="History" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:layout_marginLeft="220px" android:textColor="#CC6600" /> 
+
+	</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/RelativeLayout01" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/White">
+	<RelativeLayout android:id="@+id/RelativeLayout02"
+		android:layout_width="fill_parent" android:layout_height="50px"
+		android:layout_alignParentTop="true">
+		<ImageView android:layout_below="@+id/RelativeLayout02"
+			android:id="@+id/ImageView01" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+		</ImageView>
+	</RelativeLayout>
+	<RelativeLayout android:layout_below="@+id/RelativeLayout02"
+		android:id="@+id/RelativeLayout03" android:layout_centerInParent="true"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<TextView android:layout_below="@+id/RelativeLayout02"
+			android:id="@+id/TextView01" android:text="Welcome to SafeCab"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textStyle="bold" android:textColor="@color/Black"
+			android:gravity="center" android:layout_marginTop="10px"
+			android:textSize="26px">
+		</TextView>
+		<TextView android:layout_below="@+id/RelativeLayout02"
+			android:id="@+id/TextView02"
+			android:text="By joining SafeCab you are able to see one of the largest networks of verified Taxi networks.Find the closest company or cars,See the driver before you get into a cab,rate the journey or allow us to track you via your phone."
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textColor="@color/Black" android:paddingRight="5px"
+			android:paddingLeft="10px" android:textSize="18px"
+			android:layout_marginTop="60px" android:layout_marginLeft="7px"
+			android:layout_marginRight="7px">
+		</TextView>
+		<TextView android:layout_below="@+id/TextView02" android:id="@+id/TextView03"
+			android:text="Our only aim is to get home safely"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textColor="@color/Black" android:paddingLeft="10px"
+			android:layout_marginTop="15px" android:textSize="18px"
+			android:layout_marginLeft="7px" android:layout_marginRight="7px">
+		</TextView>
+		<Button android:layout_width="wrap_content"
+			android:layout_below="@+id/TextView03" android:layout_toLeftOf="@+id/ImageView02"
+			android:layout_height="wrap_content" android:id="@+id/Button01"
+			android:layout_marginTop="30px" android:layout_marginLeft="120px"
+			android:background="@drawable/enterimage">
+		</Button>
+	</RelativeLayout>
+</RelativeLayout>

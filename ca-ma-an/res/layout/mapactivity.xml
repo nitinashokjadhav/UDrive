@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/RelativeLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="@color/White">
+- <RelativeLayout android:id="@+id/RelativeLayout02" android:layout_height="50px" android:layout_alignParentTop="true" android:layout_width="fill_parent">
+  <ImageView android:id="@+id/img1" android:layout_width="fill_parent" android:layout_below="@+id/RelativeLayout02" android:layout_height="fill_parent" android:background="@drawable/headers" /> 
+  <Button android:layout_height="wrap_content" android:id="@+id/Btnabout" android:layout_width="wrap_content" android:layout_above="@+id/RelativeLayout02" android:background="@drawable/aboutus" android:layout_marginTop="9px" android:layout_marginLeft="229px" />
+  <Button android:layout_height="wrap_content" android:id="@+id/Btngo"
+			android:layout_width="wrap_content" android:layout_above="@+id/RelativeLayout03"
+			android:background="@drawable/go" android:layout_marginTop="9px"
+			android:layout_marginLeft="7px">
+		</Button> 
+  </RelativeLayout>
+- <RelativeLayout android:layout_width="fill_parent" android:layout_below="@+id/RelativeLayout02" android:layout_height="44px" android:id="@+id/RelativeLayout03">
+  <EditText android:layout_width="190px" android:layout_below="@+id/RelativeLayout03" android:id="@+id/EditText01" android:layout_height="40px" android:gravity="center" android:layout_marginTop="2px" android:layout_marginLeft="20px" /> 
+  <Button android:layout_width="90px" android:layout_toRightOf="@+id/EditText01" android:layout_below="@+id/RelativeLayout03" android:layout_marginTop="2px" android:text="Find" android:id="@+id/Button01" android:layout_height="40px" android:textStyle="bold" /> 
+  </RelativeLayout>
+- <RelativeLayout android:layout_width="wrap_content" android:layout_below="@+id/EditText01" android:layout_height="wrap_content" android:id="@+id/mainlayout" android:layout_marginTop="90px">
+  <com.google.android.maps.MapView android:id="@+id/mapview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:clickable="true" android:apiKey="0Ch_WE9h_nEP2PAKSitikTNq__MnPyqLBaWLKQw" />
+  </RelativeLayout>
+- <RelativeLayout android:layout_width="wrap_content" android:layout_above="@+id/mapview" android:layout_height="wrap_content" android:id="@+id/RelativeLayout03">
+<ZoomControls android:layout_width="150px" android:id="@+id/ZoomControls01" android:layout_height="wrap_content" android:layout_above="@+id/mapview" android:layout_marginTop="355px"></ZoomControls>
+  <Button android:layout_width="115px" android:id="@+id/Button02" android:text="Live Map" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:textColor="#CC6600" /> 
+<Button android:layout_width="115px" android:id="@+id/Button03" android:text="In The Cab" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:layout_marginLeft="110px" android:textColor="#CC6600" /> 
+  <Button android:layout_width="115px" android:id="@+id/Button04" android:text="History" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:layout_marginLeft="220px" android:textColor="#CC6600" /> 
+
+</RelativeLayout>
+  </RelativeLayout>

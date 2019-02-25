@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterAsActivity"
+    android:background="@drawable/road">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Logo"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="158dp"
+        android:gravity="center"
+        android:text="Do you Want to register as?"
+        android:textSize="35sp"
+        android:textColor="@color/gray"
+        android:fontFamily="cursive"
+      />
+    <TextView
+        android:id="@+id/as_driver"
+        android:background="@drawable/registertextborder"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:text="As Driver"
+        android:textColor="@color/gray"
+        android:textSize="30dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="45sp"
+        android:gravity="center"
+        android:layout_marginTop="350dp"
+        android:text="OR"
+        android:fontFamily="monospace"
+        android:textColor="@color/gray"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/as_user"
+        android:background="@drawable/registertextborder"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        android:text="As User"/>
+
+</RelativeLayout>
+

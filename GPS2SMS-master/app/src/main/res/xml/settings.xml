@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_content">
+
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/shareProviders"
+            android:entryValues="@array/shareProvidersValues"
+            android:key="prefSMSContent"
+            android:summary="@string/pref_sms_content_summary"
+            android:title="@string/pref_smstext" />
+
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/shareProviders"
+            android:entryValues="@array/shareProvidersValues"
+            android:key="prefClipboard"
+            android:summary="@string/pref_clip_summary"
+            android:title="@string/pref_clip" />
+
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/shareProviders"
+            android:entryValues="@array/shareProvidersValues"
+            android:key="prefShareButtonsContent"
+            android:summary="@string/pref_share_buttons_text_summary"
+            android:title="@string/pref_share_buttons_text" />
+
+        <Preference
+            android:key="prefFav"
+            android:summary="@string/choose_fav_app_info"
+            android:title="@string/choose_fav_app" />
+
+        <EditTextPreference
+            android:key="prefTextBefore"
+            android:title="@string/pref_text_before"
+            android:summary="@string/pref_text_before_summary"
+            android:dialogTitle="@string/pref_text_before"
+            android:defaultValue="" />
+
+        <EditTextPreference
+            android:key="prefTextAfter"
+            android:title="@string/pref_text_after"
+            android:summary="@string/pref_text_after_summary"
+            android:dialogTitle="@string/pref_text_after"
+            android:defaultValue="" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_about">
+
+        <Preference
+            android:key="prefAbout"
+            android:summary="@string/pref_about_summary"
+            android:title="@string/app_name" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

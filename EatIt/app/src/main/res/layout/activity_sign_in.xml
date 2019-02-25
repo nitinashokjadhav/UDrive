@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/IndianRed"
+    tools:context=".SignIn">
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/editPhone"
+        android:layout_marginStart="11dp"
+        android:src="@drawable/ic_contact_phone_black_24dp" />
+
+    <ImageView
+        android:layout_width="76dp"
+        android:layout_height="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/ic_person_black_24dp" />
+
+    <ImageView
+        android:layout_width="76dp"
+        android:layout_height="49dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_email_black_24dp" />
+
+    <ImageView
+        android:layout_width="76dp"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/editPass2"
+        android:src="@drawable/ic_lock_black_24dp" />
+    <ImageView
+        android:layout_width="76dp"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/editPass"
+        android:src="@drawable/ic_lock_open_black_24dp" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/editPhone"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="31dp"
+        android:layout_marginTop="158dp"
+        android:hint="Enter phoneNumber"
+        android:inputType="phone"
+        android:text="09895394"
+        android:textColor="@color/White"
+        app:met_maxCharacters="10"
+        app:met_textColor="@color/White"
+        app:met_textColorHint="@color/Black" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/editName"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editPass"
+        android:layout_marginTop="61dp"
+        android:hint="Enter Name"
+        android:inputType="text"
+        android:text="nitin"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="11"
+        app:met_singleLineEllipsis="true"
+        app:met_textColor="@color/FloralWhite"
+        app:met_textColorHint="@color/Black" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/editPass"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/editPhone"
+        android:layout_marginBottom="182dp"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:text="1234"
+        app:met_textColor="@color/White"
+        app:met_textColorHint="@color/Black" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/editEmail"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editPhone"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="250dp"
+        android:hint="Enter Email"
+        android:inputType="text"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="11"
+        app:met_singleLineEllipsis="true"
+        app:met_textColor="@color/FloralWhite"
+        app:met_textColorHint="@color/Black" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/editPass2"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/editPhone"
+        android:layout_marginBottom="114dp"
+        android:hint="Re-Enter Password"
+        android:inputType="textPassword"
+        android:text="1234"
+        app:met_textColor="@color/White"
+        app:met_textColorHint="@color/Black" />
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btnSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="55dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/Black"
+        android:text="Register"
+        android:textColor="@color/IndianRed"
+        app:buttonColor="@color/Black" />
+        <!--<info.hoang8f.widget.FButton-->
+        <!--android:id="@+id/btnSign"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:buttonColor="@color/btnSignUp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:text="Sign Up"-->
+        <!--android:layout_margin="5dp"-->
+        <!--/>-->
+
+</RelativeLayout>

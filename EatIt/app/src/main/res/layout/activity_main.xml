@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    tools:context=".MainActivity">
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/food_n_travel"/>
+<LinearLayout
+    android:layout_alignParentBottom="true"
+    android:weightSum="2"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="UselessParent">
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btnSign"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/IndianRed"
+        app:buttonColor="@color/Black"
+        android:layout_weight="1"
+        android:text="Sign Up"
+        android:layout_margin="5dp"
+        app:shadowColor="@color/IndianRed"
+        android:backgroundTint="@color/Black"
+        />
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Sign IN"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/IndianRed"
+        app:buttonColor="@color/IndianRed"
+        app:shadowColor="@color/Black"
+        />
+</LinearLayout>
+</RelativeLayout>
+

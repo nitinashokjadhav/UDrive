@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">notification_App</string>
+    <string name="btn_name">notify</string>
+    <string name="text">Click the button below</string>
+</resources>
