@@ -14,17 +14,17 @@ import android.util.Log;
 public  class DbHelper extends SQLiteOpenHelper {
     public static final String TAG=DbHelper.class.getSimpleName();
     public static final String DB_NAME="myapp_db";
-    public static final int DB_VERSION=2;
+    public static final int DB_VERSION=3;
     public static final String USER_TABLE="users";
     public static final  String COLUMN_ID="_id";
-    public static final String COLUMN_PASS="password";
+    public static final String COLUMN_TYPE="type";
     public static final String COLUMN_EMAIL="email";
 
 
     public static final String CREATE_TABLE_USERS = "CREATE TABLE "+USER_TABLE+" ("
             +COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_EMAIL+" TEXT,"
-            + COLUMN_PASS+" TEXT);";
+            + COLUMN_TYPE+" TEXT);";
 
     public DbHelper(Context context) {
         super(context, DB_NAME , null , DB_VERSION);
@@ -44,29 +44,27 @@ public  class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addUser(String email,String password){
+    public void addUser(String email,String type){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues values=new ContentValues();
         values.put(COLUMN_EMAIL,email);
-        values.put(COLUMN_PASS,password);
+        values.put(COLUMN_TYPE,type);
         long id =db.insert(USER_TABLE,null,values);
         db.close();
         Log.d(TAG,"user inserted "+id);
     }
 
-    public boolean getUser(String email,String pass)
+    public Cursor getUser(String email)
     {
-        String selectQuery = "select * from "+ USER_TABLE + " where "+ COLUMN_EMAIL +" = "+"'"+email+"'"+" and "+ COLUMN_PASS+" = "+"'"+pass+"'";
+        String selectQuery = "select * from "+ USER_TABLE + " where "+ COLUMN_EMAIL +" = "+"'"+email+"'";
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery(selectQuery,null);
         cursor.moveToFirst();
         if (cursor.getCount()>0)
         {
-            return true;
+            return cursor;
         }
-        cursor.close();
-        db.close();
-        return false;
+        return cursor;
     }
 
 //    public Bitmap getImage(String id)

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/RelativeLayout01" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/White">
+	<RelativeLayout android:id="@+id/RelativeLayout02"
+		android:layout_height="50px" android:layout_alignParentTop="true"
+		android:layout_width="fill_parent">
+		<ImageView android:id="@+id/img1" android:layout_width="fill_parent"
+			android:layout_below="@+id/RelativeLayout02" android:layout_height="fill_parent"
+			android:background="@drawable/headers">
+		</ImageView>
+		<Button android:layout_height="wrap_content" android:id="@+id/Btnabout"
+			android:layout_width="wrap_content" android:layout_above="@+id/RelativeLayout03"
+			android:background="@drawable/go" android:layout_marginTop="9px"
+			android:layout_marginLeft="7px">
+		</Button>
+	</RelativeLayout>
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_below="@+id/RelativeLayout02" android:layout_height="fill_parent"
+		android:id="@+id/RelativeLayout03">
+		<ImageView android:id="@+id/ImageView01"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@drawable/aboutimage" android:layout_marginTop="20px"
+			android:layout_marginLeft="35px">
+		</ImageView>
+		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+			android:layout_toRightOf="@+id/ImageView01" android:layout_height="wrap_content"
+			android:text="About Us" android:textColor="@color/Black"
+			android:textSize="23px" android:layout_marginTop="35px"
+			android:textStyle="bold" android:layout_marginLeft="45px">
+		</TextView>
+		<TextView android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/TextView02"
+			android:layout_below="@+id/ImageView01"
+			android:text="At SafeCab we aim to make things simple.By showing you local Taxi Companies and Cars you can easily find that SafeCab home."
+			android:textColor="@color/Black" android:layout_marginTop="15px"
+			android:paddingLeft="10px" android:paddingRight="5px"
+			android:layout_marginLeft="7px" android:layout_marginRight="7px"
+			android:textSize="18px">
+		</TextView>
+		<TextView android:layout_below="@+id/TextView02" android:id="@+id/TextView03"
+			android:text="Look back at history and even rate your journey."
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textSize="18px" android:textColor="@color/Black"
+			android:layout_marginLeft="7px" android:layout_marginRight="7px"
+			android:paddingLeft="10px" android:layout_marginTop="15px">
+		</TextView>
+		<TextView android:layout_below="@+id/TextView03" android:id="@+id/TextView04"
+			android:text="Please specify the tracking interval"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textSize="18px" android:textColor="@color/Black"
+			android:layout_marginLeft="7px" android:layout_marginRight="7px"
+			android:paddingLeft="10px" android:layout_marginTop="15px">
+		</TextView>
+	</RelativeLayout>
+	<RelativeLayout android:layout_above="@+id/mapview"
+		android:layout_height="wrap_content" android:id="@+id/RelativeLayout03"
+		android:layout_width="fill_parent">
+		<Button android:layout_width="115px" android:id="@+id/Button02" android:text="Live Map" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:textColor="#CC6600" /> 
+<Button android:layout_width="115px" android:id="@+id/Button03" android:text="In The Cab" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:layout_marginLeft="110px" android:textColor="#CC6600" /> 
+  <Button android:layout_width="115px" android:id="@+id/Button04" android:text="History" android:layout_height="40px" android:layout_above="@+id/mapview" android:layout_marginTop="395px" android:layout_marginLeft="220px" android:textColor="#CC6600" /> 
+
+	</RelativeLayout>
+</RelativeLayout>

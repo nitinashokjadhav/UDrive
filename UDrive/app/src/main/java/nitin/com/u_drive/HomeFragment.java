@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     Button button7;
     Button button8, locate;
     View view1;
-double latitude,longitude;
+    double latitude, longitude;
     Location location;
     LocationManager locationManager, mLocationManager;
     public Intent intent;
@@ -69,25 +69,25 @@ double latitude,longitude;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
-
-        }
         FirebaseUser firebase_user = FirebaseAuth.getInstance().getCurrentUser();
         locate = (Button) view.findViewById(R.id.location);
-        user   =(TextView) view.findViewById(R.id.user);
+        user = (TextView) view.findViewById(R.id.user);
 
-        if(firebase_user==null) {
-        user.setText("Guest");
-        }
-        else {
+        if (firebase_user == null) {
+            user.setText("Guest");
+        } else {
             user.setText(firebase_user.getEmail());
 
         }
-            locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
-            Location location;
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new MyLocationListener());
+
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        }
+        locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+        Location location;
+
+
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new MyLocationListener());
 
         locate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,11 +188,11 @@ double latitude,longitude;
                 addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
                 if (!addresses.isEmpty()) {
                     String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-                    String city = addresses.get(0).getLocality();
-                    String state = addresses.get(0).getAdminArea();
-                    String country = addresses.get(0).getCountryName();
-                    String postalCode = addresses.get(0).getPostalCode();
-                    String knownName = addresses.get(0).getFeatureName();
+                    String city = " "+addresses.get(0).getLocality()+" ";
+                    city += addresses.get(0).getAdminArea()+" ";
+                    city += addresses.get(0).getCountryName()+" ";
+                    city += addresses.get(0).getPostalCode()+" ";
+                    city +=addresses.get(0).getFeatureName();
                     locat.setText("city is" + city);
                     Log.e("TAG", city);
                 }

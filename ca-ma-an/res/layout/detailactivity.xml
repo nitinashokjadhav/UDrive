@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/RelativeLayout01" android:background="@color/White"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+	<RelativeLayout android:id="@+id/RelativeLayout02"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<ImageView android:layout_below="@+id/RelativeLayout02"
+			android:id="@+id/ImageView01" android:layout_width="100px"
+			android:layout_height="100px" android:layout_marginLeft="40px"
+			android:background="@drawable/img"></ImageView>
+	</RelativeLayout>
+	<TextView android:layout_toRightOf="@+id/RelativeLayout02"
+		android:id="@+id/TextView01" android:text="@+id/TextView01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:textColor="@color/Black" android:layout_marginLeft="80px"
+		android:layout_marginTop="20px"></TextView>
+	<TextView android:id="@+id/TextView02" android:text="@+id/TextView02"
+		android:layout_below="@+id/RelativeLayout02" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:textColor="@color/Black"
+		android:layout_marginLeft="70px" android:layout_marginTop="6px"></TextView>
+	<TextView android:id="@+id/TextView03" android:text="@+id/TextView03"
+		android:layout_below="@+id/TextView02" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:textColor="@color/Black"
+		android:layout_marginTop="6px" android:layout_marginLeft="70px"></TextView>
+	<TextView android:id="@+id/TextView04" android:text="@+id/TextView04"
+		android:layout_below="@+id/TextView03" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:textColor="@color/Black"
+		android:layout_marginTop="6px" android:layout_marginLeft="70px"></TextView>
+	<TextView android:id="@+id/TextView05" android:text="@+id/TextView05"
+		android:layout_below="@+id/TextView04" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:textColor="@color/Black"
+		android:layout_marginLeft="70px" android:layout_marginTop="6px"></TextView>
+
+	<TextView android:id="@+id/TextView06" android:layout_below="@+id/TextView05"
+		android:layout_height="wrap_content" android:textColor="@color/Black"
+		android:text="Rating" android:layout_width="50px"
+		android:layout_marginLeft="70px" android:layout_marginTop="6px"></TextView>
+	<ImageView android:layout_toRightOf="@+id/TextView06"
+		android:layout_below="@+id/TextView05" android:id="@+id/ImageView02"
+		android:layout_width="32px" android:layout_height="32px"
+		android:background="@drawable/str"></ImageView>
+
+	<ImageView android:layout_toRightOf="@+id/ImageView02"
+		android:layout_below="@+id/TextView05" android:id="@+id/ImageView03"
+		android:layout_height="32px" android:layout_width="32px"
+		android:background="@drawable/str"></ImageView>
+	<ImageView android:layout_toRightOf="@+id/ImageView03"
+		android:layout_below="@+id/TextView05" android:id="@+id/ImageView04"
+		android:layout_height="32px" android:layout_width="32px"
+		android:background="@drawable/str"></ImageView>
+	<ImageView android:layout_toRightOf="@+id/ImageView04"
+		android:layout_below="@+id/TextView05" android:id="@+id/ImageView05"
+		android:layout_height="32px" android:layout_width="32px"
+		android:background="@drawable/str"></ImageView>
+	<ImageView android:layout_toRightOf="@+id/ImageView05"
+		android:layout_below="@+id/TextView05" android:id="@+id/ImageView06"
+		android:layout_height="32px" android:layout_width="32px"
+		android:background="@drawable/str"></ImageView>
+</RelativeLayout>

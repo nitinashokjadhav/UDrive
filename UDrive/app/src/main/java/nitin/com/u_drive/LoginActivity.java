@@ -1,6 +1,8 @@
 package nitin.com.u_drive;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.drawable.ScaleDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,10 +30,10 @@ import java.util.Objects;
 import static android.text.TextUtils.isEmpty;
 
 public class LoginActivity extends AppCompatActivity {
-CheckBox checkBox;
-EditText password,email;
-Button   login;
-FirebaseAuth mAuth;
+    CheckBox checkBox;
+    EditText password,email;
+    Button   login;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,9 @@ FirebaseAuth mAuth;
         password = (EditText)findViewById(R.id.et_password);
         email    = (EditText)findViewById(R.id.et_email);
         login    =  (Button) findViewById(R.id.btn_login);
+
+        mAuth=FirebaseAuth.getInstance();
+
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -57,7 +62,7 @@ FirebaseAuth mAuth;
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String e,p;
+                final String e,p;
                 e=email.getText().toString();
                 p=password.getText().toString();
 
@@ -68,6 +73,42 @@ FirebaseAuth mAuth;
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.e("auth", "success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                DatabaseReference current= null;
+                                String typ = null;
+//                                 current = FirebaseDatabase.getInstance().getReference().child(user.getUid()).getRoot();
+//                                 type = current.toString();
+//                                Log.e("Parent",""+type);
+
+                                 //Checking the type of user for changing activity
+                                DbHelper dbHelper = new DbHelper(getApplicationContext());
+                                Cursor cursor = dbHelper.getUser(e);
+
+                                if (cursor != null && cursor.moveToFirst()) {
+                                    typ = cursor.getString(2);
+                                    Log.e("User", typ);
+                                    cursor.close();
+                                }
+
+                                if(!typ.isEmpty())
+                                {
+                                    if(typ.contains("customer"))
+                                    {
+                                        Log.e("check","customer");
+                                        startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("user_type", "customer"));
+                                        finish();
+                                    }
+                                    else if(typ.contains("owner"))
+                                    {
+                                        Log.e("check","owner");
+                                        startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("user_type", "owner"));
+                                        finish();
+                                    }
+                                    else
+                                    {
+                                        Log.e("check","fail");
+                                    }
+                                }
+
 
                             } else {
                                 // If sign in fails, display a message to the user.

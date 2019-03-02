@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Broadcast My Location</string>
+    <string name="title_activity_edit_numbers">Contacts</string>
+    <string name="title_activity_help">Help | About</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="enter_numbers_hint">Enter the numbers, comma separated.</string>
+    <string name="enable_service">Enable service?</string>
+    <string name="add_number">Add</string>
+    <string name="no_contacts_added">No contacts have been added.</string>
+    <string name="edit_numbers_menu_item">Contacts</string>
+    <string name="app_description_help">The application provides you with a service to automatically capture the location and send a text message to your contacts.
+
+    \n\nDeveloped and maintained by Afzaal Ahmad Zeeshan.</string>
+    <string name="know_how_description_html">
+        You can use the application service in the following steps:\n
+        \n
+        \t 1. Add the contacts to your application. It is in the menu on home page.\n
+        \t 2. Adjust the time and location values.\n
+        \t\t * Set up the minimum time (in minutes) after which application must check for your current location.\n
+        \t\t * Set up the minimum meters travelled to trigger the SMS service.\n
+        \t 3. Remember to enable the service.\n
+        \n
+        \nShould you require any assistance, feature or want to submit a bug report, let me know on Google Play.
+        \nThank you.
+    </string>
+    <string name="service_disabled_welcome">Service is currently turned off, no SMS notification will be sent.</string>
+</resources>

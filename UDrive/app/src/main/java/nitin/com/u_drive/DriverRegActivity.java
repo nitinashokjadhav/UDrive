@@ -21,10 +21,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
+import static nitin.com.u_drive.validator.EmailValidator;
+import static nitin.com.u_drive.validator.NameValidator;
+import static nitin.com.u_drive.validator.PasswordValidator;
+import static nitin.com.u_drive.validator.PhoneNumberValidator;
+
 public class DriverRegActivity extends AppCompatActivity {
-    public FirebaseAuth mAuth;
     EditText name, email, password, phone;
     Button register;
+    public FirebaseAuth mAuth;
     public FirebaseAuth.AuthStateListener authStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,51 +63,52 @@ public class DriverRegActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.e("On", "Click");
-                final String Email, pass, Name, PhnNo, pass2;
-                Email = email.getText().toString();
-                Log.e("e", Email);
-                pass = password.getText().toString();
-                Name = name.getText().toString();
-                PhnNo = phone.getText().toString();
-
-                try {
-
-                    mAuth.createUserWithEmailAndPassword(Email, pass).addOnCompleteListener(DriverRegActivity.this,
-                            new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Log.e("Task", "task");
-                                    if (task.isSuccessful()) {
-                                        Log.e("login", "successfull");
-                                        String user_id = mAuth.getCurrentUser().getUid();
-                                        if (user_id != null) {
-                                            Log.e("Register", user_id);
-                                            DatabaseReference current_owner = FirebaseDatabase.getInstance().getReference().child("user").child("owner").child(user_id);
-                                            User user = new User(Name, PhnNo, Email);
-                                            current_owner.setValue(user);
-                                            Toast.makeText(DriverRegActivity.this, "Logged in", Toast.LENGTH_LONG).show();
-                                            startActivity(new Intent(DriverRegActivity.this, MainActivity.class).putExtra("user_type", "owner"));
-                                        } else {
-                                            Log.e("Register", "no user id found");
-                                        }
-                                    } else {
-                                        FirebaseAuthException e = (FirebaseAuthException) task.getException();
-                                        Log.e("login", "" + e);
-                                        Toast.makeText(DriverRegActivity.this, "Failed register", Toast.LENGTH_LONG);
-                                    }
-                                }
-                            });
-                }
-                catch (Exception e)
-                {
-
-                }
+               if(validate())
+               {
+register();
+               }
             }
 
         });
     }
+
+    private boolean validate() {
+        boolean result = true;
+        String e = email.getText().toString();
+        String n = name.getText().toString();
+        String p = phone.getText().toString();
+        String pa = password.getText().toString();
+        if (!NameValidator(n))
+        {
+            name.setError("Name is wrong or empty");
+            result = false;
+            return false;
+        }
+
+        if(!PhoneNumberValidator(p))
+        {
+            phone.setError("Email is wrong or empty");
+            result = false;
+            return false;
+        }
+        if(!EmailValidator(e))
+        {
+            email.setError("Email is wrong or empty");
+            result = false;
+            return false;
+        }
+        if(PasswordValidator(p))
+        {
+            password.setError("atleast 6 characters");
+            result = false;
+            return false;
+        }
+        return result;
+    }
+
     @Override
-    protected void onStart(){
+    protected void onStart()
+    {
         super.onStart();
         mAuth.addAuthStateListener(authStateListener);
     }
@@ -112,5 +118,51 @@ public class DriverRegActivity extends AppCompatActivity {
     {
         super.onStop();
         mAuth.removeAuthStateListener(authStateListener);
+    }
+    public void register()
+    {
+        final String Email, pass, Name, PhnNo, pass2;
+        Email = email.getText().toString();
+        Log.e("e", Email);
+        pass = password.getText().toString();
+        Name = name.getText().toString();
+        PhnNo = phone.getText().toString();
+        final DbHelper dbHelper = new DbHelper(getApplicationContext());
+        try {
+
+            mAuth.createUserWithEmailAndPassword(Email, pass).addOnCompleteListener(DriverRegActivity.this,
+                    new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.e("Task", "task");
+                            if (task.isSuccessful()) {
+                                Log.e("login", "successfull");
+                                String user_id = mAuth.getCurrentUser().getUid();
+                                if (user_id != null)
+                                {
+                                    Log.e("Register", user_id);
+                                    DatabaseReference current_owner = FirebaseDatabase.getInstance().getReference().child("user").child("owner").child(user_id);
+                                    User user = new User(Name, PhnNo, Email);
+                                    current_owner.setValue(user);
+                                    dbHelper.addUser(Email,"owner");
+                                    Toast.makeText(DriverRegActivity.this, "Logged in", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(DriverRegActivity.this, CarOnwer.class));
+                                } else {
+                                    Log.e("Register", "no user id found");
+                                }
+                            }
+                            else
+                            {
+                                FirebaseAuthException e = (FirebaseAuthException) task.getException();
+                                Log.e("login", "" + e);
+                                Toast.makeText(DriverRegActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG);
+                            }
+                        }
+                    });
+        }
+        catch (IllegalArgumentException e)
+        {
+            Toast.makeText(DriverRegActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+        }
     }
 }

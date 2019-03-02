@@ -33,7 +33,9 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Tour_Info" />
         <activity android:name=".Places" />
-        <activity android:name=".CarOnwer"></activity>
+        <activity android:name=".CarOnwer" />
+        <activity android:name=".AddPhoto" />
+        <activity android:name=".YourItem"></activity>
     </application>
 
 </manifest>

@@ -17,11 +17,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static nitin.com.u_drive.validator.EmailValidator;
+import static nitin.com.u_drive.validator.NameValidator;
+import static nitin.com.u_drive.validator.PasswordValidator;
+import static nitin.com.u_drive.validator.PhoneNumberValidator;
+
 public class UserRegActivity extends AppCompatActivity {
-    EditText name, phone, email, password,password2;
+  public EditText name, phone, email, password,password2;
 
     private Button reg;
     private DbHelper db;
@@ -59,9 +65,9 @@ public class UserRegActivity extends AppCompatActivity {
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // if(validateForm()) {
+                if(validateForm()) {
                     register();
-                //}
+                }
             }
         });
 
@@ -87,12 +93,26 @@ public class UserRegActivity extends AppCompatActivity {
                                 Log.e("user_id", user_id);
                                 String email = task.getResult().getUser().getEmail();
                                 User user = new User(Name, PhnNo, email);
-                                current_user_db.setValue(true);
+                                current_user_db.setValue(user);
+                                DbHelper dbHelper = new DbHelper(getApplicationContext());
+                                dbHelper.addUser(email,"customer");
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(Name).build();
+                                FirebaseUser firebaseUser =mAuth.getCurrentUser();
+                                firebaseUser.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.d("name", "User profile updated.");
+                                        }
+                                    }
+                                });
+
                                 startActivity(new Intent(UserRegActivity.this, MainActivity.class).putExtra("user_type", "customer"));
                             } else {
                                 FirebaseAuthException e = (FirebaseAuthException) task.getException();
                                 Log.e("login", "" + e);
-                                Toast.makeText(UserRegActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG);
+                                Toast.makeText(UserRegActivity.this,""+e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });
@@ -113,30 +133,37 @@ public class UserRegActivity extends AppCompatActivity {
     {
         Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
     }
-//    private boolean validateForm() {
-//        boolean result = true;
-//        String e = Email.trim();
-//        if (e.isEmpty())
-//        {
-//            email.setError("Empty");
-//            result = false;
-//        }
-//        if (Name.equals(""))
-//        {
-//            name.setError("Empty");
-//            result = false;
-//        }
-//        if (PhnNo.equals(""))
-//        {
-//            phone.setError("Empty");
-//            result = false;
-//        }
-//        if (password.length()<7)
-//        {
-//            password.setError("atleast 6");
-//            result = false;
-//        }
-//
-//        return result;
-//    }
+    private boolean validateForm() {
+        boolean result = true;
+        String e = email.getText().toString();
+        String n = name.getText().toString();
+        String p = phone.getText().toString();
+        String pa = password.getText().toString();
+        if (!NameValidator(n))
+        {
+            name.setError("Name is wrong or empty");
+            result = false;
+            return false;
+        }
+
+        if(!PhoneNumberValidator(p))
+        {
+            phone.setError("Email is wrong or empty");
+            result = false;
+            return false;
+        }
+        if(!EmailValidator(e))
+        {
+            email.setError("Email is wrong or empty");
+            result = false;
+            return false;
+        }
+        if(PasswordValidator(p))
+        {
+            password.setError("atleast 6 characters");
+            result = false;
+            return false;
+        }
+        return result;
+    }
 }

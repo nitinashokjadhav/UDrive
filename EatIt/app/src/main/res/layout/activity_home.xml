@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/IndianRed"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <ImageView
+        android:layout_width="37dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:outlineSpotShadowColor="@color/DarkGreen"
+        android:src="@drawable/ic_location_searching_black_24dp" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/place"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="30dp"
+        android:hint="Place to explore..... "
+        app:met_textColorHint="@color/Black"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="100dp"
+        app:met_textColor="@color/DarkGreen"
+        />
+
+    <ImageView
+        android:layout_width="52dp"
+        android:layout_height="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="195dp"
+        android:src="@drawable/ic_group_black" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/pNumber"
+        android:text="Number of people "
+        android:layout_above="@+id/place"
+        android:layout_marginLeft="50dp"
+        />
+
+    <ImageView
+        android:layout_width="52dp"
+        android:layout_height="33dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="195dp"
+        android:src="@drawable/ic_event_black_24dp" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Ndays"
+        android:text="Days for tour "
+        android:layout_below="@+id/place"
+        android:layout_marginLeft="50dp"
+        />
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btngo"
+        android:layout_width="1in"
+        android:layout_height="wrap_content"
+        android:text="Lets Go!!"
+        android:textColor="@color/FloralWhite"
+        app:buttonColor="@color/Black"
+        android:layout_below="@+id/Ndays"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/Black"
+        />
+</RelativeLayout>

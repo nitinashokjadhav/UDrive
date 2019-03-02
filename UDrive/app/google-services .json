@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "84379466690",
+    "firebase_url": "https://udrive-770ef.firebaseio.com",
+    "project_id": "udrive-770ef",
+    "storage_bucket": "udrive-770ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84379466690:android:ba461a5e45a73fa7",
+        "android_client_info": {
+          "package_name": "nitin.com.u_drive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84379466690-ig9dmt3cp96l2e20v26acd61j66sgshm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nitin.com.u_drive",
+            "certificate_hash": "3feb341df6879ae4cb28a38749bdc2a21db0a330"
+          }
+        },
+        {
+          "client_id": "84379466690-vo5dpgfpijgelgi9hcg307j2nl65nvfb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASac9DaMoi7-YAdsgpLTYhzXRRknwJNFA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84379466690-vo5dpgfpijgelgi9hcg307j2nl65nvfb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
