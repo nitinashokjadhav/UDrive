@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText password,email;
     Button   login;
     FirebaseAuth mAuth;
+    private Button btnVisible,btnInVisible;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,20 +44,24 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.et_password);
         email    = (EditText)findViewById(R.id.et_email);
         login    =  (Button) findViewById(R.id.btn_login);
-
+        btnVisible =findViewById(R.id.visible);
+        btnInVisible = findViewById(R.id.inVisible);
+        btnVisible.setVisibility(View.INVISIBLE);
         mAuth=FirebaseAuth.getInstance();
 
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        btnInVisible.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-                else
-                {
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
+            public void onClick(View v) {
+                btnVisible.setVisibility(View.VISIBLE);
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                btnInVisible.setVisibility(View.INVISIBLE);
+            }
+        });
+    btnVisible.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+                btnInVisible.setVisibility(View.VISIBLE);
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
         });
 

@@ -35,7 +35,8 @@
         <activity android:name=".Places" />
         <activity android:name=".CarOnwer" />
         <activity android:name=".AddPhoto" />
-        <activity android:name=".YourItem"></activity>
+        <activity android:name=".YourItem" />
+        <activity android:name=".ImagesActivity"></activity>
     </application>
 
 </manifest>
