@@ -15,6 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity
             android:name=".Splash"
             android:windowSoftInputMode="adjustPan">
@@ -36,7 +41,8 @@
         <activity android:name=".CarOnwer" />
         <activity android:name=".AddPhoto" />
         <activity android:name=".YourItem" />
-        <activity android:name=".ImagesActivity"></activity>
+        <activity android:name=".ImagesActivity" />
+        <activity android:name=".MapDirection" />
     </application>
 
 </manifest>

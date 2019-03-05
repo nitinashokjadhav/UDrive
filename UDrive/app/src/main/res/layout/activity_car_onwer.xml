@@ -1,100 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CarOnwer">
-    <LinearLayout
-        android:background="@android:color/darker_gray"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-        android:orientation="vertical">
-        <android.support.v7.widget.CardView
-            android:id="@+id/card"
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/post_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Submit Your CAR"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:gravity="center"
-                    android:textSize="20sp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:id="@+id/card1"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/add"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Add Photos"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textSize="20sp"/>
-                <ImageView
-                    android:layout_marginTop="50dp"
-                    android:layout_below="@id/add"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_add_photo"
-                    />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/card2"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_marginTop="10dp">
+    <TextView
+        android:id="@+id/card1"
+        android:layout_width="291dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="173dp"
+        android:gravity="center_horizontal"
+        android:text="Click to add car" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="131dp">
+    <TextView
+        android:id="@+id/card2"
+        android:layout_width="308dp"
+        android:layout_height="54dp"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:text="click to view car" />
 
-                <TextView
-                    android:id="@+id/item"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Describe your CAR"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_below="@id/item"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/ic_add_photo" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-        <Button
-            android:id="@+id/post_now"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="3dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:text="ADD Details"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
-
-</ScrollView>
+    <Button
+        android:id="@+id/driver_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/card1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="37dp"
+        android:text="Logout" />
+</RelativeLayout>

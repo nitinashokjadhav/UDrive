@@ -14,20 +14,25 @@ import android.util.Log;
 import android.view.MenuItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
     public FirebaseAuth mAuth;
     public FirebaseAuth.AuthStateListener authStateListener;
+    private DatabaseReference mRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         BottomNavigationView bottomNavigationView  = findViewById(R.id.btmNav);
         disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         mAuth = FirebaseAuth.getInstance();
-
+        Log.e("MainActivity","Inside MainActivity");
         //check whether the user is already registered and navigate according to their roles
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -35,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null)
                 {
+                //    mRef = FirebaseDatabase.getInstance().getReference(user.getProviders().toString());
+//                    Log.e("Ref",""+mRef);
                     String email = user.getEmail();
                     Log.e("email", email);
                     String typ = null;
@@ -51,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
                         if (!typ.isEmpty()) {
                             if (typ.contains("customer")) {
                                 Log.e("check", "customer");
-                                Fragment fragment = new HomeFragment();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                                finish();
+                                Log.e("MainActivity","Inside MainActivity");
+                               Fragment fragment = new HomeFragment();
+                               getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
                             } else if (typ.contains("owner")) {
                                 Log.e("check", "owner");
                                 startActivity(new Intent(getApplicationContext(), CarOnwer.class));
@@ -72,22 +79,24 @@ public class MainActivity extends AppCompatActivity {
 
         //Changing the interface after registration
         Intent intent = getIntent();
-        String user= intent.getStringExtra("user_type");
+        String type= intent.getStringExtra("user_type");
 
-        if(user!=null) {
-            switch (user) {
+        if(type!=null) {
+
+
+            switch (type) {
                 case "customer":
-                    Log.e("main", user);
+                    Log.e("main", type);
                     Fragment fragment = new HomeFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                     break;
                 case "owner":
-                    Log.e("main", user);
+                    Log.e("main", type);
                     startActivity(new Intent(MainActivity.this, CarOnwer.class));
                     break;
                 default:
-                     user = "empty";
-                    Log.e("main", user);
+                     type = "empty";
+                    Log.e("main", type);
             }
         }
         else {

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
@@ -92,7 +93,7 @@ public class UserRegActivity extends AppCompatActivity {
                                 DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("user").child("customer").child(user_id);
                                 Log.e("user_id", user_id);
                                 String email = task.getResult().getUser().getEmail();
-                                User user = new User(Name, PhnNo, email);
+                                User user = new User(Name, PhnNo, email,"customer");
                                 current_user_db.setValue(user);
                                 DbHelper dbHelper = new DbHelper(getApplicationContext());
                                 dbHelper.addUser(email,"customer");
@@ -110,7 +111,7 @@ public class UserRegActivity extends AppCompatActivity {
 
                                 startActivity(new Intent(UserRegActivity.this, MainActivity.class).putExtra("user_type", "customer"));
                             } else {
-                                FirebaseAuthException e = (FirebaseAuthException) task.getException();
+                                FirebaseException e = (FirebaseException) task.getException();
                                 Log.e("login", "" + e);
                                 Toast.makeText(UserRegActivity.this,""+e.getMessage(), Toast.LENGTH_LONG).show();
                             }
@@ -142,26 +143,23 @@ public class UserRegActivity extends AppCompatActivity {
         if (!NameValidator(n))
         {
             name.setError("Name is wrong or empty");
-            result = false;
+
             return false;
         }
 
         if(!PhoneNumberValidator(p))
         {
             phone.setError("Email is wrong or empty");
-            result = false;
             return false;
         }
         if(!EmailValidator(e))
         {
             email.setError("Email is wrong or empty");
-            result = false;
             return false;
         }
-        if(PasswordValidator(p))
+        if(PasswordValidator(pa))
         {
             password.setError("atleast 6 characters");
-            result = false;
             return false;
         }
         return result;

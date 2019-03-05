@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     Button button6;
     Button button7;
     Button button8, locate;
+    private TextView cost_finder;
     View view1;
     double latitude, longitude;
     Location location;
@@ -72,7 +73,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
         FirebaseUser firebase_user = FirebaseAuth.getInstance().getCurrentUser();
         locate = (Button) view.findViewById(R.id.location);
         user = (TextView) view.findViewById(R.id.user);
-
+        cost_finder = view.findViewById(R.id.cost_find);
         if (firebase_user == null) {
             user.setText("Guest");
         } else {
@@ -97,7 +98,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
             }
         });
 
-
+        cost_finder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),MapDirection.class));
+            }
+        });
         //you can hard-code the lat & long if you have issues with getting it
         //remove the below if-condition and use the following couple of lines
         //double latitude = 37.422005;

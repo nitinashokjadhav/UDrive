@@ -1,15 +1,16 @@
 package nitin.com.u_drive;
 
 public class User {
-    String name,phoneNo,email;
+    private String name,phoneNo,email,type;
     public User()
     {}
 
-    public User(String name,String phoneNo,String email)
+    public User(String name,String phoneNo,String email,String type)
     {
         this.name = name;
         this.phoneNo = phoneNo;
         this.email  =   email;
+
     }
 
     public String getName() {
@@ -34,5 +35,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

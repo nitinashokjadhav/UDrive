@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
@@ -36,27 +37,11 @@ public class DriverRegActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_reg);
         mAuth = FirebaseAuth.getInstance();
-        name = (EditText) findViewById(R.id.rg_name);
-        email = (EditText) findViewById(R.id.rg_email);
-        phone = (EditText) findViewById(R.id.rg_phone);
-        password = (EditText) findViewById(R.id.rg_password);
-        register = (Button) findViewById(R.id.btn_register);
-
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user  =  FirebaseAuth.getInstance().getCurrentUser();
-                Log.e("USer ","Fck this shit''");
-//                if(user!=null)
-//                {
-//                    Intent intent = new Intent(DriverRegActivity.this,MainActivity.class);
-//                    startActivity(intent.putExtra("user_type","car_owner"));
-//                    finish();
-//                    return;
-//                }
-            }
-        };
-
+        name =  findViewById(R.id.rg_name);
+        email =  findViewById(R.id.rg_email);
+        phone =  findViewById(R.id.rg_phone);
+        password =  findViewById(R.id.rg_password);
+        register =  findViewById(R.id.btn_register);
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +50,7 @@ public class DriverRegActivity extends AppCompatActivity {
                 Log.e("On", "Click");
                if(validate())
                {
-register();
+                    register();
                }
             }
 
@@ -97,7 +82,7 @@ register();
             result = false;
             return false;
         }
-        if(PasswordValidator(p))
+        if(pa.length()<7)
         {
             password.setError("atleast 6 characters");
             result = false;
@@ -106,19 +91,7 @@ register();
         return result;
     }
 
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
-        mAuth.addAuthStateListener(authStateListener);
-    }
 
-    @Override
-    protected void onStop()
-    {
-        super.onStop();
-        mAuth.removeAuthStateListener(authStateListener);
-    }
     public void register()
     {
         final String Email, pass, Name, PhnNo, pass2;
@@ -142,7 +115,7 @@ register();
                                 {
                                     Log.e("Register", user_id);
                                     DatabaseReference current_owner = FirebaseDatabase.getInstance().getReference().child("user").child("owner").child(user_id);
-                                    User user = new User(Name, PhnNo, Email);
+                                    User user = new User(Name, PhnNo, Email,"owner");
                                     current_owner.setValue(user);
                                     dbHelper.addUser(Email,"owner");
                                     Toast.makeText(DriverRegActivity.this, "Logged in", Toast.LENGTH_LONG).show();
@@ -153,9 +126,9 @@ register();
                             }
                             else
                             {
-                                FirebaseAuthException e = (FirebaseAuthException) task.getException();
+                                FirebaseException e = (FirebaseException) task.getException();
                                 Log.e("login", "" + e);
-                                Toast.makeText(DriverRegActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG);
+                                Toast.makeText(DriverRegActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });
