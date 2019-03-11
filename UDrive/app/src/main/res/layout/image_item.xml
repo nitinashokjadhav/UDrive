@@ -13,7 +13,6 @@
             android:id="@+id/text_view_name"
             android:layout_width="88dp"
             android:layout_height="43dp"
-
             android:gravity="center_horizontal"
             android:text="Name"
             android:textColor="@android:color/black"

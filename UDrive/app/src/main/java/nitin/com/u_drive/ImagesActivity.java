@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,9 +48,10 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.on
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(ImagesActivity.this);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mStorage = FirebaseStorage.getInstance();
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads").child(user.getUid());
 
        valueEventListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -58,11 +60,11 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.on
                 //going through all the data in dataSnapShot
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
                 {
-                        Upload upload = postSnapshot.getValue(Upload.class);
+                    Upload upload = postSnapshot.getValue(Upload.class);
 
-                       upload.setMkey(postSnapshot.getKey());
+                    upload.setMkey(postSnapshot.getKey());
 
-                        mUploads.add(upload);
+                    mUploads.add(upload);
 
                 }
                 //creating adapter
@@ -93,7 +95,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.on
     @Override
     public void onDeleteClick(int position) {
             Upload selectedItem =mUploads.get(position);
-    final String selectedKey = selectedItem.getMkey();
+            final String selectedKey = selectedItem.getMkey();
 
         StorageReference imgRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl());
 

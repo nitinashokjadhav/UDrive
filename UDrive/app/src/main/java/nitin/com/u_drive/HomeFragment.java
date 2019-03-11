@@ -3,7 +3,6 @@ package nitin.com.u_drive;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,12 +11,10 @@ import android.location.Geocoder;
 import android.location.Location;
 
 import android.location.LocationManager;
-import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -109,7 +106,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
         //double latitude = 37.422005;
         //double longitude = -122.084095;
 
-
         locat = (EditText) view.findViewById(R.id.l);
         button1 = (Button) view.findViewById(R.id.btn1);
         button2 = (Button) view.findViewById(R.id.btn2);
@@ -176,38 +172,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
 
 
     @SuppressLint("SetTextI18n")
-    protected void showCurrentLocation()
-    {
+    protected String showCurrentLocation() {
 
-        //@SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Toast.makeText(getActivity(), "Alert sent. Location: " + latitude + " " + longitude, Toast.LENGTH_LONG).show();
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(getContext(), Locale.getDefault());
+        String city = null;
+        try {
 
-
-      //  if(location!=null) {
-//            latitude = location.getLatitude();
-//            longitude = location.getLongitude();
-            Toast.makeText(getActivity(), "Alert sent. Location: " + latitude + " " + longitude, Toast.LENGTH_LONG).show();
-            Geocoder geocoder;
-            List<Address> addresses;
-            geocoder = new Geocoder(getContext(), Locale.getDefault());
-            try {
-
-                addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                if (!addresses.isEmpty()) {
-                    String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-                    String city = " "+addresses.get(0).getLocality()+" ";
-                    city += addresses.get(0).getAdminArea()+" ";
-                    city += addresses.get(0).getCountryName()+" ";
-                    city += addresses.get(0).getPostalCode()+" ";
-                    city +=addresses.get(0).getFeatureName();
-                    locat.setText("city is" + city);
-                    Log.e("TAG", city);
-                }
+            addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            if (!addresses.isEmpty()) {
+                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                city = " " + addresses.get(0).getLocality() + " ";
+                city += addresses.get(0).getAdminArea() + " ";
+                city += addresses.get(0).getCountryName() + " ";
+                city += addresses.get(0).getPostalCode() + " ";
+                city += addresses.get(0).getFeatureName();
+                locat.setText("city is" + city);
+                Log.e("TAG", city);
             }
-            catch (IOException e){
-                e.printStackTrace();
-                Toast.makeText(getContext(),""+e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "" + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+        }
         locationManager.removeUpdates(new MyLocationListener());
+        return city;
         //}
     }
 
@@ -220,105 +210,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
 
 
 
-
-    private class GeocoderHandler extends Handler {
-        @Override
-        public void handleMessage(Message message) {
-            String locationAddress;
-            switch (message.what) {
-                case 1:
-                    Bundle bundle = message.getData();
-                    locationAddress = bundle.getString("address");
-                    break;
-                default:
-                    locationAddress = null;
-            }
-            locat.setText(locationAddress);
-            Log.i("address", "Address is " + locationAddress);
-        }
-    }
-
-    private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(getContext(), ACCESS_FINE_LOCATION);
-
-
-        return result == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void requestPermission() {
-
-        ActivityCompat.requestPermissions(getActivity(), new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_CODE);
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0) {
-
-                    boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-
-                    if (locationAccepted && cameraAccepted)
-                        Snackbar.make(view1, "Permission Granted, Now you can access location data and camera.", Snackbar.LENGTH_LONG).show();
-                    else {
-
-                        Snackbar.make(view1, "Permission Denied, You cannot access location data and camera.", Snackbar.LENGTH_LONG).show();
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION) && shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION)) {
-                                showMessageOKCancel("You need to allow access to both the permissions",
-                                        new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                    requestPermissions(new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION},
-                                                            PERMISSION_REQUEST_CODE);
-                                                }
-                                            }
-                                        });
-                                return;
-                            }
-                        }
-
-                    }
-                }
-
-
-                break;
-        }
-    }
-
-
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(getContext())
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show();
-    }
-
-    private Location getLastKnownLocation() {
-        mLocationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
-        List<String> providers = mLocationManager.getProviders(true);
-        Location bestLocation = null;
-        for (String provider : providers) {
-
-            @SuppressLint("MissingPermission")
-            Location l = mLocationManager.getLastKnownLocation(provider);
-            if (l == null) {
-                continue;
-            }
-            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
-                bestLocation = l;
-            }
-        }
-        return bestLocation;
-    }
-    private class MyLocationListener implements android.location.LocationListener{
+   private class MyLocationListener implements android.location.LocationListener{
 
         @Override
         public void onLocationChanged(Location location) {
