@@ -28,7 +28,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.on
     private ImageAdapter mAdapter;
     private ProgressBar progressBar;
     private FirebaseStorage mStorage;
-    private DatabaseReference mDatabaseRef;
+    private DatabaseReference mDatabaseRef,cDatabaseRef;
     private ValueEventListener valueEventListener;
     private List<Upload> mUploads;
 
@@ -51,6 +51,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.on
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mStorage = FirebaseStorage.getInstance();
 
+        cDatabaseRef = FirebaseDatabase.getInstance().getReference("cars");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads").child(user.getUid());
 
        valueEventListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
@@ -103,6 +104,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.on
             @Override
             public void onSuccess(Void aVoid) {
                 mDatabaseRef.child(selectedKey).removeValue();
+                cDatabaseRef.child(selectedKey).removeValue();
                 Toast.makeText(ImagesActivity.this,"Item Deleted" ,Toast.LENGTH_SHORT).show();
             }
         });

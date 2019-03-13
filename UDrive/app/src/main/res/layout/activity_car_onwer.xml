@@ -4,33 +4,170 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:padding="10dp"
     tools:context=".CarOnwer">
 
-    <TextView
-        android:id="@+id/card1"
-        android:layout_width="291dp"
-        android:layout_height="46dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="173dp"
-        android:gravity="center_horizontal"
-        android:text="Click to add car" />
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:elevation="0dp"
+        android:background="@color/white"
+        android:layout_gravity="center"
+        android:id="@+id/appbarid">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="PROFILE"
+              android:textAlignment="center"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:id="@+id/profilename"
+        android:layout_below="@+id/appbarid"
+        android:layout_marginTop="50dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/person" />
 
-    <TextView
-        android:id="@+id/card2"
-        android:layout_width="308dp"
-        android:layout_height="54dp"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:text="click to view car" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/emailid"
+        android:layout_below="@+id/profilename"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/mail" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="Email ID"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/phone"
+        android:layout_below="@+id/emailid"
+        android:layout_marginTop="30dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/phone"/>
+        <TextView
+            android:id="@+id/contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="contact number"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/addcar"
+        android:layout_below="@+id/phone"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/addcar"/>
+
+        <TextView
+            android:id="@+id/card1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Click to ADD CAR"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/viewcar"
+        android:layout_below="@+id/addcar"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/view"/>
+
+        <TextView
+            android:id="@+id/card2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Click to VIEW CAR"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/logout"
+        android:layout_below="@+id/viewcar"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="60dp">
+
 
     <Button
         android:id="@+id/driver_logout"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
+        android:textSize="20sp"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/card1"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="37dp"
-        android:text="Logout" />
+        android:background="@drawable/button_rectangle"
+        android:text="LOGOUT" />
+
+    </LinearLayout>
 </RelativeLayout>
