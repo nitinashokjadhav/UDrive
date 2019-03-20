@@ -115,9 +115,10 @@ public class MapDirection extends AppCompatActivity implements OnMapReadyCallbac
     public final static double AVERAGE_RADIUS_OF_EARTH = 6371;
 
 //Getting latitude and longitude according to place name
-    public boolean getLatitudeAndLongitude(String searchedAddress){
+    public void getLatitudeAndLongitude(String searchedAddress){
         String TAG = "Get Coordinates";
         Geocoder coder = new Geocoder(this);
+        double [] coordinates = new double[2];
         List<Address> address;
         try {
 
@@ -130,13 +131,12 @@ public class MapDirection extends AppCompatActivity implements OnMapReadyCallbac
             mMap.addMarker(place2);
             Log.d(TAG, "Address Latitude : "+ location.getLatitude()+ "Address Longitude : "+ location.getLongitude());
             dlatitude = location.getLatitude();
+            coordinates[0]=location.getLatitude();
+            coordinates[1]=location.getLongitude();
             dlongitude=location.getLongitude();
             Log.e(TAG,""+dlongitude);
-            return true;
-
         }catch(Exception e){
             Log.d(TAG, "MY_ERROR : ############Address Not Found");
-            return false;
         }
     }
     public float calculateDistance(double userLat, double userLng, double venueLat, double venueLng) {

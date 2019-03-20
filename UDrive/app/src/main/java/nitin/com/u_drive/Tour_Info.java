@@ -40,6 +40,7 @@ public class Tour_Info extends AppCompatActivity implements
     private int mYear, mMonth, mDay, mHour, mMinute;
     private TextView locat;
     private TextView mEndDate,mPickupTime;
+    String s_location;
     double latitude, longitude;
     Location location;
     private LocationRequest mLocationRequest;
@@ -51,6 +52,7 @@ public class Tour_Info extends AppCompatActivity implements
         setContentView(R.layout.activity_car_info);
         locat   =findViewById(R.id.tx_location);
         btnSubmit=findViewById(R.id.btn_next);
+        s_location = getIntent().getStringExtra("location");
         locat.setText(getIntent().getStringExtra("location"));
         btnStartDate=findViewById(R.id.btn_date);
         btnEndDate  =findViewById(R.id.btn_end_date);
@@ -73,7 +75,7 @@ public class Tour_Info extends AppCompatActivity implements
      @Override
      public void onClick(View v) {
          Log.e("submit","in intent");
-         startActivity(new Intent(Tour_Info.this,GetCar.class));
+         startActivity(new Intent(Tour_Info.this,GetCar.class).putExtra("location",s_location));
 
      }
  });

@@ -31,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView  = findViewById(R.id.btmNav);
         disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
+        String to = getIntent().getStringExtra("from");
+        Log.e("to",""+to);
+        if(to=="CAR")
+        {
+            Fragment fragment= new BookFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+        }
+
         mAuth = FirebaseAuth.getInstance();
         Log.e("MainActivity","Inside MainActivity");
         //check whether the user is already registered and navigate according to their roles
@@ -75,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+
 
 
         //Changing the interface after registration
